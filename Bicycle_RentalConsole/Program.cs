@@ -52,12 +52,13 @@ namespace Bicycle_Rental
                 Console.WriteLine("Please enter a valid email address!");
                 }
             }
-            Console.WriteLine("You total prices is: EUR {0}", manager.CheckOut());
+           
             Console.WriteLine("Thank you for choosing our Bike Rental Shop!");
             Console.WriteLine("Here is the list of your purchase: ");
             foreach (var bike in manager.CompleteTransaction())
             {
                 Console.WriteLine($"{bike.Model} bicycle was rented");
+                Console.WriteLine("You total prices is: EUR {0}", manager.CheckOut(bike.IdNumber));
             }
             Console.Read();
         }

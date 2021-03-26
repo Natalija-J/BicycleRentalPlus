@@ -9,11 +9,11 @@ namespace Bicycle_Rental
     public class User
     {
         //for now each user will have an email without stipulation of symbols
-        public string Email;
+        public string Email { get; set; }
         //each user chooses the time for how long they want to rent a bicycle
-        public int RentTime;
-        
-        public Bicycle RentalBike;
+        public int RentTime { get; set; }
+
+        public Bicycle RentalBike { get; set; }
         //if there is a number of bikes a user wants to rent
         public List<Bicycle> Bikes { get; set; }
 
@@ -22,15 +22,16 @@ namespace Bicycle_Rental
             RentalBike = new Bicycle();
             Bikes = new List<Bicycle>();
         }
-        public User(string _email, int _time)
+        public User(string email, int time)
         {
-            Email = _email;
-            RentTime = _time;
+            Email = email;
+            RentTime = time;
         }
 
-        public double TotalCost()
+        public double TotalCost(int id)
         {
-            var totalPrice = Bikes.Sum(b => b.Cost * RentTime);
+            var bike = RentalBike.Bicycles.FirstOrDefault(b => b.IdNumber == id);
+            var totalPrice = bike.Cost * RentTime;
             return totalPrice;
         }
         

@@ -44,9 +44,9 @@ namespace Bicycle_Rental.Manager
             return customer;
         }
 
-        public double CheckOut()
+        public double CheckOut(int id)
         {
-            return Renter.TotalCost();
+            return Renter.TotalCost(id);
         }
        public List<Bicycle> CompleteTransaction()
         {
